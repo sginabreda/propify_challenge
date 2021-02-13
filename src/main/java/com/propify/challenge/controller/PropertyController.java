@@ -2,30 +2,42 @@ package com.propify.challenge.controller;
 
 import com.propify.challenge.domain.Property;
 import com.propify.challenge.domain.PropertyReport;
+import com.propify.challenge.dto.PropertyRequestDto;
+import com.propify.challenge.newmapper.PropertyMapper;
 import com.propify.challenge.service.PropertyService;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Collection;
 
+@Validated
 @RestController
 @RequestMapping(value = "/properties",
                 produces = {"application/json"})
 public class PropertyController {
 
-    PropertyService propertyService;
+    private PropertyService propertyService;
+    private PropertyMapper propertyMapper;
 
-    // API endpoints for CRUD operations on entities of type Property
+    public PropertyController(PropertyService propertyService, PropertyMapper propertyMapper) {
+        this.propertyService = propertyService;
+        this.propertyMapper = propertyMapper;
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Collection<Property> search(String minRentPrice, String maxRentPrice) {
+    public Collection<Property> search(@RequestParam String minRentPrice,@RequestParam String maxRentPrice) {
         return propertyService.search(minRentPrice, maxRentPrice);
     }
 
@@ -37,14 +49,14 @@ public class PropertyController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void insert(Property property) {
+    public void insert(@Valid @RequestBody PropertyRequestDto property) {
         // TODO: Property attributes must be validated
-        propertyService.insert(property);
+        propertyService.insert(propertyMapper.toProperty(property));
     }
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void update(Property property) {
+    public void update(@PathVariable int id, @RequestBody Property property) {
         // TODO: Property attributes must be validated
         propertyService.update(property);
     }
