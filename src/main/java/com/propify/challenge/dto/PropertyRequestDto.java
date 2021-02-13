@@ -1,7 +1,5 @@
 package com.propify.challenge.dto;
 
-import com.propify.challenge.domain.Address;
-
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -16,7 +14,7 @@ public class PropertyRequestDto {
 	        fraction = 2)
 	private double rentPrice;
 	@NotNull
-	private Address address;
+	private AddressDto address;
 	@Pattern(regexp = ".+@.+\\..+",
 	         message = "Invalid email address")
 	private String emailAddress;
@@ -36,7 +34,7 @@ public class PropertyRequestDto {
 		return rentPrice;
 	}
 
-	public Address getAddress() {
+	public AddressDto getAddress() {
 		return address;
 	}
 

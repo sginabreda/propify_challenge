@@ -1,40 +1,42 @@
 package com.propify.challenge.service;
 
-import com.propify.challenge.mapper.AddressMapper;
+import com.propify.challenge.mapper.AddressDatabaseMapper;
 import com.propify.challenge.domain.Property;
-import com.propify.challenge.mapper.PropertyMapper;
+import com.propify.challenge.mapper.PropertyDatabaseMapper;
 import com.propify.challenge.domain.PropertyReport;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@Service
 public class PropertyService {
 
-    PropertyMapper propertyMapper;
+    PropertyDatabaseMapper propertyDatabaseMapper;
 
-    AddressMapper addressMapper;
+    AddressDatabaseMapper addressDatabaseMapper;
 
     AlertService alertService;
 
     public Collection<Property> search(String minRentPrice, String maxRentPrice) {
-        return propertyMapper.search(minRentPrice, maxRentPrice);
+        return propertyDatabaseMapper.search(minRentPrice, maxRentPrice);
     }
 
     public Property findById(int id) {
-        return propertyMapper.findById(id);
+        return propertyDatabaseMapper.findById(id);
     }
 
     public void insert(Property property) {
-        propertyMapper.insert(property);
-        System.out.println("CREATED: " + property.id);
+        propertyDatabaseMapper.insert(property);
+        System.out.println("CREATED: " + property.getId());
     }
 
     public void update(Property property) {
-        propertyMapper.update(property);
-        System.out.println("UPDATED: " + property.id);
+        propertyDatabaseMapper.update(property);
+        System.out.println("UPDATED: " + property.getId());
     }
 
     public void delete(int id) {
-        propertyMapper.delete(id);
+        propertyDatabaseMapper.delete(id);
         System.out.println("DELETED: " + id);
 
         alertService.sendPropertyDeletedAlert(id);
@@ -43,7 +45,7 @@ public class PropertyService {
     }
 
     public PropertyReport propertyReport() {
-        var allProperties = propertyMapper.search(null, null);
+        var allProperties = propertyDatabaseMapper.search(null, null);
         var propertyReport = new PropertyReport();
 
         // Calculate total quantity

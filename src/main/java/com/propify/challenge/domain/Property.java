@@ -2,19 +2,13 @@ package com.propify.challenge.domain;
 
 public class Property {
 
-    private Integer id; // must be null for INSERT and not null for UPDATE
-
+    private Integer id;
     private String createTime;
-
     private PropertyType type;
-
-    private double rentPrice; // must be greater than 0, 2 decimal places
-
-    private Address address; // must not be null
-
-    private String emailAddress; // must be a valid email address
-
-    private String code; // not null, only uppercase letters or numbers, 10 characters
+    private double rentPrice;
+    private Address address;
+    private String emailAddress;
+    private String code;
 
     public Property(Integer id, String createTime, PropertyType type, double rentPrice, Address address, String emailAddress, String code) {
         this.id = id;

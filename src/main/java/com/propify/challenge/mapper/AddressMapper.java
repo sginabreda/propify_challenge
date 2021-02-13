@@ -1,16 +1,15 @@
 package com.propify.challenge.mapper;
 
 import com.propify.challenge.domain.Address;
-import org.apache.ibatis.annotations.Mapper;
+import com.propify.challenge.dto.AddressDto;
+import org.springframework.stereotype.Component;
 
-import java.util.Set;
+@Component
+public class AddressMapper {
 
-@Mapper
-public interface AddressMapper {
-
-    void insert(Address address);
-
-    Set<Address> search();
-
-    Address findById(Integer id);
+	public Address toAddress(AddressDto addressDto) {
+		Address address = new Address(addressDto.getStreet(), addressDto.getCity(), addressDto.getState(),
+				addressDto.getZip(), addressDto.getTimezone());
+		return address;
+	}
 }

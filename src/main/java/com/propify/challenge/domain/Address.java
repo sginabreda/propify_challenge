@@ -2,13 +2,37 @@ package com.propify.challenge.domain;
 
 public class Address {
 
-    public String street; // must not be null or blank
+    private String street;
+    private String city;
+    private String state;
+    private String zip;
+    private String timezone;
 
-    public String city; // must not be null or blank
+    public Address(String street, String city, String state, String zip, String timezone) {
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.timezone = timezone;
+    }
 
-    public String state; // 2-letter code, must not be null or blank
+    public String getStreet() {
+        return street;
+    }
 
-    public String zip; // 5-digit code, must not be null or blank
+    public String getCity() {
+        return city;
+    }
 
-    public String timezone; // Must be a valid timezone
+    public String getState() {
+        return state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public String getTimezone() {
+        return timezone;
+    }
 }

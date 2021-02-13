@@ -3,7 +3,7 @@ package com.propify.challenge.controller;
 import com.propify.challenge.domain.Property;
 import com.propify.challenge.domain.PropertyReport;
 import com.propify.challenge.dto.PropertyRequestDto;
-import com.propify.challenge.newmapper.PropertyMapper;
+import com.propify.challenge.mapper.PropertyMapper;
 import com.propify.challenge.service.PropertyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;

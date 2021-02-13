@@ -1,20 +1,19 @@
 package com.propify.challenge.mapper;
 
 import com.propify.challenge.domain.Property;
-import org.apache.ibatis.annotations.Mapper;
+import com.propify.challenge.domain.PropertyType;
+import com.propify.challenge.dto.PropertyRequestDto;
+import org.springframework.stereotype.Component;
 
-import java.util.Set;
+@Component
+public class PropertyMapper {
 
-@Mapper
-public interface PropertyMapper {
+	private AddressMapper addressMapper;
 
-    public void insert(Property property);
-
-    public Set<Property> search(String minRentPrice, String maxRentPrice);
-
-    public Property findById(Integer id);
-
-    public void update(Property property);
-
-    public void delete(Integer id);
+	public Property toProperty(PropertyRequestDto propertyRequestDto) {
+		Property property = new Property(null, propertyRequestDto.getCreateTime(), PropertyType.CONDOMINIUM,
+				propertyRequestDto.getRentPrice(), addressMapper.toAddress(propertyRequestDto.getAddress()),
+				propertyRequestDto.getEmailAddress(), propertyRequestDto.getCode());
+		return property;
+	}
 }
