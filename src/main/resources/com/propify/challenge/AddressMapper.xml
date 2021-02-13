@@ -3,15 +3,16 @@
 <mapper namespace="com.propify.challenge.mapper.AddressDatabaseMapper">
 
     <insert id="insert">
-INSERT INTO address ...
+        INSERT INTO address (street, city, us_state, zip, timezone)
+            VALUES (#{street}, #{city}, #{state}, #{zip}, #{timezone});
     </insert>
 
     <select id="search" resultType="com.propify.challenge.domain.Address">
-SELECT * FROM address;
+        SELECT * FROM address;
     </select>
 
     <select id="findById" resultType="com.propify.challenge.domain.Address">
-SELECT * FROM address WHERE id = #{id};
+        SELECT * FROM address WHERE id = #{id};
     </select>
 
 </mapper>

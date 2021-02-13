@@ -3,19 +3,26 @@
 <mapper namespace="com.propify.challenge.mapper.PropertyDatabaseMapper">
 
     <insert id="insert">
-INSERT INTO property (rent_price) VALUES (#{rentPrice});
+        INSERT INTO property (create_time, property_type, rent_price, email_address, code)
+            VALUES (#{createTime}, #{type}, #{rentPrice}, #{emailAddress}, #{code});
     </insert>
 
     <update id="update">
-UPDATE property ...
+        UPDATE property
+            SET create_time = #{createTime},
+                property_type = #{type},
+                rent_price = #{rentPrice},
+                email_address = #{emailAddress},
+                code = #{code}
+         WHERE id = #{id}
     </update>
 
     <delete id="delete">
-DELETE FROM property ...
+        DELETE FROM property WHERE id = #{id}
     </delete>
 
     <select id="search" resultType="com.propify.challenge.domain.Property">
-SELECT * FROM property;
+        SELECT * FROM property WHERE rent_price BETWEEN ISNULL(#{minRentPrice}, 0) AND IFNULL(#{maxRentPrice}, 99999999);
     </select>
 
     <select id="findById" resultType="com.propify.challenge.domain.Property">
