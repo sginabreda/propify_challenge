@@ -14,7 +14,7 @@ public class PropertyRequestDto {
 	        fraction = 2)
 	private double rentPrice;
 	@NotNull
-	private AddressDto address;
+	private AddressRequestDto address;
 	@Pattern(regexp = ".+@.+\\..+",
 	         message = "Invalid email address")
 	private String emailAddress;
@@ -34,7 +34,7 @@ public class PropertyRequestDto {
 		return rentPrice;
 	}
 
-	public AddressDto getAddress() {
+	public AddressRequestDto getAddress() {
 		return address;
 	}
 

@@ -1,17 +1,26 @@
 package com.propify.challenge.dto;
 
-public class AddressDto {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
-	private Integer id;
+public class AddressRequestDto {
+
+	@NotNull
+	@NotBlank
 	private String street;
+	@NotNull
+	@NotBlank
 	private String city;
+	@NotNull
+	@NotBlank
+	@Pattern(regexp = "[A-Z]{2}")
 	private String state;
+	@NotNull
+	@NotBlank
+	@Pattern(regexp = "[0-9]{5}")
 	private String zip;
-	private String timezone;
-
-	public Integer getId() {
-		return id;
-	}
+	private String timezone; // Must be a valid timezone
 
 	public String getStreet() {
 		return street;
@@ -31,14 +40,5 @@ public class AddressDto {
 
 	public String getTimezone() {
 		return timezone;
-	}
-
-	public AddressDto(Integer id, String street, String city, String state, String zip, String timezone) {
-		this.id = id;
-		this.street = street;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.timezone = timezone;
 	}
 }

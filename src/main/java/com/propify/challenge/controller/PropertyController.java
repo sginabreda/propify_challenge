@@ -2,6 +2,7 @@ package com.propify.challenge.controller;
 
 import com.propify.challenge.domain.Property;
 import com.propify.challenge.domain.PropertyReport;
+import com.propify.challenge.dto.PropertyDto;
 import com.propify.challenge.dto.PropertyRequestDto;
 import com.propify.challenge.mapper.PropertyMapper;
 import com.propify.challenge.service.PropertyService;
@@ -43,21 +44,19 @@ public class PropertyController {
 
     @GetMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Property findById(@PathVariable int id) {
-        return propertyService.findById(id);
+    public PropertyDto findById(@PathVariable int id) {
+        return propertyMapper.toPropertyDto(propertyService.findById(id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void insert(@Valid @RequestBody PropertyRequestDto property) {
-        // TODO: Property attributes must be validated
         propertyService.insert(propertyMapper.toProperty(property));
     }
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void update(@PathVariable int id, @RequestBody Property property) {
-        // TODO: Property attributes must be validated
         propertyService.update(property);
     }
 

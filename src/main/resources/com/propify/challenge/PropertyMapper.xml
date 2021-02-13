@@ -19,7 +19,7 @@ SELECT * FROM property;
     </select>
 
     <select id="findById" resultType="com.propify.challenge.domain.Property">
-SELECT * FROM property WHERE id = #{id};
+        SELECT * FROM property WHERE id = #{id};
     </select>
 
 </mapper>
