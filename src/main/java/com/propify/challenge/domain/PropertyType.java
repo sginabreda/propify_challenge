@@ -1,15 +1,15 @@
 package com.propify.challenge.domain;
 
-public class PropertyType {
+public enum PropertyType {
 
-    public static final PropertyType SINGLE_FAMILY = new PropertyType("Single Family");
-    public static final PropertyType MULTI_FAMILY = new PropertyType("Multi-family");
-    public static final PropertyType CONDOMINIUM = new PropertyType("Condominium");
-    public static final PropertyType TOWNHOUSE = new PropertyType("Townhouse");
+	SINGLE_FAMILY("Single Family"),
+	MULTI_FAMILY("Multi-family"),
+	CONDOMINIUM("Condominium"),
+	TOWNHOUSE("Townhouse");
 
-    public String type;
+	public String type;
 
-    public PropertyType(String type) {
-        this.type = type;
-    }
+	PropertyType(String s) {
+		this.type = s;
+	}
 }

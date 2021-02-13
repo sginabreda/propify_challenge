@@ -29,13 +29,12 @@ public class PropertyService {
     }
 
     public void insert(Property property) {
+        addressDatabaseMapper.insert(property.getAddress());
         propertyDatabaseMapper.insert(property);
-        System.out.println("CREATED: " + property.getId());
     }
 
     public void update(int id, Property property) {
-        propertyDatabaseMapper.update(property);
-        System.out.println("UPDATED: " + property.getId());
+        propertyDatabaseMapper.update(id, property);
     }
 
     public void delete(int id) {
