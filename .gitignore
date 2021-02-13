@@ -6,3 +6,10 @@ target/
 !**/src/main/**
 !**/src/test/**
 .mvn
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
