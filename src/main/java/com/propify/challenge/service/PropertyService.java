@@ -30,7 +30,7 @@ public class PropertyService {
         System.out.println("CREATED: " + property.getId());
     }
 
-    public void update(Property property) {
+    public void update(int id, Property property) {
         propertyDatabaseMapper.update(property);
         System.out.println("UPDATED: " + property.getId());
     }

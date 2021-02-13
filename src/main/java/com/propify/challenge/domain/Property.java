@@ -20,6 +20,9 @@ public class Property {
         this.code = code;
     }
 
+    public Property() {
+    }
+
     public Integer getId() {
         return id;
     }
@@ -46,5 +49,33 @@ public class Property {
 
     public String getCode() {
         return code;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setType(PropertyType type) {
+        this.type = type;
+    }
+
+    public void setRentPrice(double rentPrice) {
+        this.rentPrice = rentPrice;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

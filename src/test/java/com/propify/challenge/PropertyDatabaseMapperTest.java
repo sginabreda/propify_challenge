@@ -4,7 +4,7 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.propify.challenge.domain.Property;
 import com.propify.challenge.domain.PropertyType;
-import com.propify.challenge.mapper.PropertyMapper;
+import com.propify.challenge.mapper.PropertyDatabaseMapper;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,25 +21,25 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
         DependencyInjectionTestExecutionListener.class,
         DbUnitTestExecutionListener.class
 })
-public class PropertyMapperTest {
+public class PropertyDatabaseMapperTest {
 
     @Autowired
-    PropertyMapper propertyMapper;
+    PropertyDatabaseMapper propertyDatabaseMapper;
 
     @Test
     public void testInsert() {
         var property = new Property();
-        property.rentPrice = 3000.99;
-        property.type = PropertyType.MULTI_FAMILY;
+        property.setRentPrice(3000.99);
+        property.setType(PropertyType.MULTI_FAMILY);
 
-        propertyMapper.insert(property);
+        propertyDatabaseMapper.insert(property);
 
         // TODO: add assertions
     }
 
     @Test
     public void testFindById() {
-        var property = propertyMapper.findById(1);
+        var property = propertyDatabaseMapper.findById(1);
 
         assert property != null;
         // TODO: add assertions

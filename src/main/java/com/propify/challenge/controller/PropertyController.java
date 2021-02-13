@@ -56,8 +56,8 @@ public class PropertyController {
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void update(@PathVariable int id, @RequestBody Property property) {
-        propertyService.update(property);
+    public void update(@PathVariable int id, @RequestBody PropertyRequestDto property) {
+        propertyService.update(id, propertyMapper.toProperty(property));
     }
 
     @DeleteMapping(value = "/{id}")

@@ -1,7 +1,7 @@
 package com.propify.challenge;
 
-import com.propify.challenge.mapper.AddressMapper;
-import com.propify.challenge.mapper.PropertyMapper;
+import com.propify.challenge.mapper.AddressDatabaseMapper;
+import com.propify.challenge.mapper.PropertyDatabaseMapper;
 import com.propify.challenge.service.AlertService;
 import com.propify.challenge.service.PropertyService;
 import org.junit.jupiter.api.Test;
@@ -13,9 +13,9 @@ public class PropertyServiceTest {
 
     PropertyService propertyService;
 
-    PropertyMapper propertyMapper;
+    PropertyDatabaseMapper propertyDatabaseMapper;
 
-    AddressMapper addressMapper;
+    AddressDatabaseMapper addressDatabaseMapper;
 
     AlertService alertService;
 
